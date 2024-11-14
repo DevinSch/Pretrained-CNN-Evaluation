@@ -1,0 +1,16 @@
+version: '1.0.5'
+
+services:
+  my-home-labs:
+    build: .
+    ports:
+      - 8888:8888
+    volumes:
+      - ../:/srv/projects
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
